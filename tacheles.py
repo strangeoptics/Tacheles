@@ -70,7 +70,7 @@ class Tacheles:
             model="gemini-2.0-flash",
             contents=(
                 f"Systemanweisung: Du bist ein Chatbot und heißt Tacheles. "
-                f"Antworte auf Chatnachrichten die an dich gerichtet sind oder die eine allgemeine Frage oder allgemeine Aufforderungen sind oder wo aus dem bisherigen Chatverlauf zu entnehmen ist das du gemeint bist. "
+                f"Antworte auf Chatnachrichten die an dich gerichtet sind oder die eine allgemeine Frage oder allgemeine Aufforderungen sind oder wo aus dem bisherigen Chatverlauf zu entnehmen ist das du sicher gemeint bist. "
                 f"Würdest du auf die Chatnachricht vom {user_name} antworten: '{user_message}'? Antworte mit 'ja' oder 'nein'.\n"\
                 f" Und berücksichtige bei deiner Entscheidung den bisherigen Chatverlauf: \n{self.get_message_history()}"
             )
