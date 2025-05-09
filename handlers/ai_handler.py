@@ -32,7 +32,8 @@ async def ai(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         if response_text:
             logging.info(f"AI response: {response_text}")
             # Send the response back to the user
-            await update.message.reply_text(response_text)
+            #await update.message.reply_text(response_text)
+            await sende_nachricht_an_gruppe(response_text)
             tacheles.update_message_history("tacheles", response_text)
         else:
             logging.error("Failed to generate AI response.")
@@ -55,7 +56,7 @@ async def sende_nachricht_an_gruppe(nachricht):
     """Sendet eine Nachricht an eine Telegram-Gruppe."""
     bot = telegram.Bot(token=os.getenv("TELEGRAM_TOKEN"))
     try:
-        chat_id = 5618116 #tacheles.get_chat_id()  # Call the method to get the chat ID
+        chat_id = tacheles.get_chat_id()  # Call the method to get the chat ID
         await bot.send_message(chat_id=chat_id, text=nachricht)
         print(f"Nachricht erfolgreich an Gruppe {chat_id} gesendet: {nachricht}")
     except telegram.error.TelegramError as e:
