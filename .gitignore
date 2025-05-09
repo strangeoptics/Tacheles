@@ -1,0 +1,29 @@
+# Python-specific ignores
+__pycache__/
+*.pyo
+*.pyd
+*.env
+*.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.jpg
+*.png
+
+# Log files
+*.log
+
+# OS-specific ignores
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# Byte-compiled files
+*.pyc
+
+# Ignore virtual environment
+.vscode/
