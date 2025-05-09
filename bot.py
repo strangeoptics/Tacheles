@@ -2,11 +2,12 @@ import os
 import logging
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes, filters, MessageHandler
-from handlers import photo_message_handler, voice_message_handler, document_image_handler, ai_message_handler, all_message_handler, charakter_handler  # Import the charakter handler
+from handlers import echo_message_handler, photo_message_handler, voice_message_handler, document_image_handler, ai_message_handler, all_message_handler, charakter_handler  # Import the charakter handler
 from tacheles import tacheles  # Rename the shared instance
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("google_genai").setLevel(logging.WARNING)
 
 print("Starting bot...")
 
@@ -40,7 +41,8 @@ def main() -> None:
     application.add_handler(photo_message_handler)
     application.add_handler(voice_message_handler)
     application.add_handler(document_image_handler)
-    application.add_handler(all_message_handler)
+    application.add_handler(all_message_handler)  # Add all handler for text messages
+    #application.add_handler(all_message_handler)
     #application.add_handler(echo_message_handler)
     
 
