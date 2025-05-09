@@ -2,7 +2,7 @@ import os
 import logging
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes, filters, MessageHandler
-from handlers import echo_message_handler, photo_message_handler, voice_message_handler, document_image_handler, ai_message_handler, all_message_handler, charakter_handler  # Import the charakter handler
+from handlers import photo_message_handler, voice_message_handler, document_image_handler, ai_message_handler, all_message_handler, charakter_handler  # Import the charakter handler
 from tacheles import tacheles  # Rename the shared instance
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
@@ -25,6 +25,10 @@ async def reset(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     tacheles.reset()
     await update.message.reply_text("Tacheles hat sich den Kopf gestoßen.")
 
+async def log_history(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    logging.info("History:\n %s", tacheles.get_message_history())
+    
+
 def main() -> None:
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     if not TELEGRAM_TOKEN:
@@ -36,14 +40,14 @@ def main() -> None:
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("joke", joke))
     application.add_handler(CommandHandler("reset", reset))  # Add reset handler
+    application.add_handler(CommandHandler("history", log_history))  # Add the log_history handler
     application.add_handler(charakter_handler)  # Add charakter handler
     application.add_handler(ai_message_handler)
     application.add_handler(photo_message_handler)
     application.add_handler(voice_message_handler)
     application.add_handler(document_image_handler)
     application.add_handler(all_message_handler)  # Add all handler for text messages
-    #application.add_handler(all_message_handler)
-    #application.add_handler(echo_message_handler)
+   
     
 
     application.run_polling()

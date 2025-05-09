@@ -47,12 +47,10 @@ async def all(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     
     user_name = user_info.username or f"{user_info.first_name} {user_info.last_name}".strip()
     logging.info(f"Message from user: {user_name}: {user_message}")
-    tacheles.update_message_history(user_name, user_message)
+    
     #await sende_nachricht_an_gruppe("nachricht")
-    response = tacheles.genai_client.models.generate_content(
-                model="gemini-2.0-flash", #model="gemini-2.0-flash",
-                contents=f"Systemanweisung: Du bist ein Chatbot und heißt Tacheles. Antworte nur auf Chatnachrichten die an dich gerichtet sind oder die eine allgemeine Frage sind. Würdest du auf die Chatnachricht vom {user_name} antworten: '{user_message}'? Antworte mit 'ja' oder 'nein'."
-            )
+    response = tacheles.should_respond(user_name, user_message)  # Moved logic into Tacheles class
+    tacheles.update_message_history(user_name, user_message)
     logging.info(f"AI response: {response.text}")
     if response.text.strip().lower() == "ja":
         response_text = tacheles.generate_response(user_name, user_message)
