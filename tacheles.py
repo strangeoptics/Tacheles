@@ -9,8 +9,9 @@ class Tacheles:
         self.MAX_HISTORY_LENGTH = 2048
         self.users = {
             "strangeoptics": "48 Jahre alt und wohnt in Weiterstadt. Er ist Programmierer bei der DFS. Er fährt gerne Rad und reist gerne in exotische Länder.",
-            "Dani El Loco": "49 Jahre alt und wohnt in Offenbach. Er verbringt die meiste Zeit mit Chatten und Musik komponieren.",
+            "Dani El Loco": "49 Jahre alt und wohnt in Offenbach. Er verbringt die meiste Zeit mit Chatten und Musik komponieren. Freuet sich über gute pornoseitentips und anmachsprüche",
             "Thomas Haibach": "49 Jahre alt und wohnt in Sprendbach. Er arbeitet bei der Post. Er zockt gerne und ist ein Liebhaber besonderer Äpplersorten.",
+            "CornyFRA": "",
         }
         
         self.chat_id = None  # Add chat_id attribute
