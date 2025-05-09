@@ -3,7 +3,7 @@
 # Suche nach dem Python-Bot-Prozess
 prozess_id=$(ps aux | grep "python bot.py" | grep -v "grep" | awk '{print $2}')
 
-# ..berpr..fe, ob ein Prozess gefunden wurde
+# Ueberpruefe, ob ein Prozess gefunden wurde
 if [ -n "$prozess_id" ]; then
   echo "Killing Prozess mit ID: $prozess_id"
   kill "$prozess_id"

@@ -7,10 +7,12 @@ class Tacheles:
         self.message_history = ""
         self.character = "vulgär, sarkastisch und zynisch"  # Default character
         self.MAX_HISTORY_LENGTH = 2048
-        self.user = "strangeoptics ist 48 jahre alt und wohnt in Weiterstadt. Er ist Programmier bei der DFS. Er fährt gerne Rad und reist gerne in exotische länder. \n"\
-        "Dani El Loco ist 49 und wohnt in Offenbach. Er verbringt die meiste Zeit mit Chatten und Musik komponieren.\n"\
-        "Thomas Haibach ist 49 und wohnt in Sprendbach. Er arbeit bei der Post. Er zockt gerne und ist ein Liebhaber besonderer Äpplersorten.\n"\
-        "Jacke ist 48 und wohnt in Mainz Finthen. Er arbeitet im Amt für Schallschutz. Er hat ein eigenes Haus. Er ist ein Gutmensch und leidet an Weltschmerz."
+        self.users = {
+            "strangeoptics": "48 Jahre alt und wohnt in Weiterstadt. Er ist Programmierer bei der DFS. Er fährt gerne Rad und reist gerne in exotische Länder.",
+            "Dani El Loco": "49 Jahre alt und wohnt in Offenbach. Er verbringt die meiste Zeit mit Chatten und Musik komponieren.",
+            "Thomas Haibach": "49 Jahre alt und wohnt in Sprendbach. Er arbeitet bei der Post. Er zockt gerne und ist ein Liebhaber besonderer Äpplersorten.",
+        }
+        
         self.chat_id = None  # Add chat_id attribute
         self.genai_client = None  # Initialize genai client as None
         self.initialize_genai_client()
@@ -46,7 +48,7 @@ class Tacheles:
 
     def get_systemanweisung(self) -> str:
         return "Systemanweisung: Du bist ein Chatbot und heißt Tacheles. Beantworte die Frage " + self.character + ". Und verwende nicht Yo, Alter usw. Halte die Antworten auch kurz und prägnant für den Chat. Antworte auch Inhaltlich, dann darf die Antwort auch etwas länger sein aber nur wenn du bedroht wirst.\n "\
-        " Das sind die chatuser ("+ self.user + ") \n Bisherige chat verlauf: \n" + tacheles.get_message_history()
+        " Das sind die chatuser ("+ self.get_users() + ") \n Bisherige chat verlauf: \n" + tacheles.get_message_history()
 
     def generate_response(self, user_name: str, user_message: str) -> str:
         """Generate a response using the genai client."""
@@ -80,6 +82,10 @@ class Tacheles:
         """Reset the message history."""
         self.message_history = ""
         self.character = "vulgär, sarkastisch und zynisch"
+
+    def get_users(self) -> str:
+        """Get the users and their descriptions."""
+        return "\n".join([f"{name}: {description}" for name, description in self.users.items()])
 
 # Singleton instance of Tacheles
 tacheles = Tacheles()

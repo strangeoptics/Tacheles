@@ -27,6 +27,14 @@ async def reset(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def log_history(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     logging.info("History:\n %s", tacheles.get_message_history())
+
+async def list_users(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    users = tacheles.users
+    if users:
+        user_list = "\n".join([f"{name}:  {description}\n" for name, description in users.items()])
+        await update.message.reply_text(f"Users:\n{user_list}")
+    else:
+        await update.message.reply_text("No users found.")
     
 
 def main() -> None:
@@ -41,6 +49,7 @@ def main() -> None:
     application.add_handler(CommandHandler("joke", joke))
     application.add_handler(CommandHandler("reset", reset))  # Add reset handler
     application.add_handler(CommandHandler("history", log_history))  # Add the log_history handler
+    application.add_handler(CommandHandler("listusers", list_users))  # Add the list_users handler
     application.add_handler(charakter_handler)  # Add charakter handler
     application.add_handler(ai_message_handler)
     application.add_handler(photo_message_handler)
