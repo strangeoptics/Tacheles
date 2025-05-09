@@ -33,7 +33,7 @@ class Tacheles:
 
         # Append the new entry to a file
         try:
-            with open("message_history.txt", "a", encoding="utf-8") as file:
+            with open("message_history.log", "a", encoding="utf-8") as file:
                 file.write(new_entry)
         except Exception as e:
             logging.error(f"Failed to write message to file: {e}")
