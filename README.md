@@ -6,4 +6,4 @@ set environmental variables
 
 pip install -r requirements.txt
 
-python bot.py
+python bot.py or ./start.sh
