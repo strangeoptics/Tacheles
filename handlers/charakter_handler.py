@@ -7,9 +7,10 @@ async def charakter(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """
     Handles the /charakter command and sends a response to the user.
     """
+    
     user_message = update.message.text
-    if user_message.startswith("/character"):
-        user_message = user_message[len("/character"):].strip()
+    user_message = user_message[len("/character"):].strip()
+    logging.info("Received a message in charakter handler." + user_message)
     tacheles.set_character(user_message)  # Use Tacheles to update character
     logging.info(f"Updated character: {tacheles.get_character()}")
     await update.message.reply_text("Character updated.")

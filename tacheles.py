@@ -31,6 +31,13 @@ class Tacheles:
         if len(self.message_history) > self.MAX_HISTORY_LENGTH:
             self.message_history = self.message_history[-self.MAX_HISTORY_LENGTH:]
 
+        # Append the new entry to a file
+        try:
+            with open("message_history.txt", "a", encoding="utf-8") as file:
+                file.write(new_entry)
+        except Exception as e:
+            logging.error(f"Failed to write message to file: {e}")
+
     def get_message_history(self) -> str:
         return self.message_history
 
@@ -72,7 +79,7 @@ class Tacheles:
             model="gemini-2.0-flash",
             contents=(
                 f"Systemanweisung: Du bist ein Chatbot und heißt Tacheles. "
-                f"Antworte auf Chatnachrichten die an dich gerichtet sind oder die eine allgemeine Frage oder allgemeine Aufforderungen sind oder wo aus dem bisherigen Chatverlauf zu entnehmen ist das du sicher gemeint bist. "
+                f"Antworte auf Chatnachrichten die an dich gerichtet sind oder die eine allgemeine Frage oder allgemeine Aufforderungen sind oder wo aus dem bisherigen Chatverlauf zu entnehmen ist das du sicher gemeint bist. Bist du gemeint, geht aber aus der Nachricht expizit hervor das du nicht antworten sollst, dann antworte auch nicht.\n "
                 f"Würdest du auf die Chatnachricht vom {user_name} antworten: '{user_message}'? Antworte mit 'ja' oder 'nein'.\n"\
                 f" Und berücksichtige bei deiner Entscheidung den bisherigen Chatverlauf: \n{self.get_message_history()}"
             )
