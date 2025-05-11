@@ -1,14 +1,5 @@
 #!/bin/bash
 
-if [ -z "$TELEGRAM_TOKEN" ]; then
-  echo "set TELEGRAM_TOKEN"
-  source ~/.bashrc
-fi
-if ! [[ "$VIRTUAL_ENV" ]]; then
-  echo "activated virtual venv..."
-  source venv/bin/activate
-fi
-
 # Suche nach dem Python-Bot-Prozess
 prozess_id=$(ps aux | grep "python bot.py" | grep -v "grep" | awk '{print $2}')
 
