@@ -15,7 +15,7 @@ class Tacheles:
     def _initialize_users() -> dict:
         """Initialize the users dictionary."""
         return {
-            "strangeoptics": "48 Jahre alt und wohnt in Weiterstadt. Er ist Programmierer bei der DFS. Er fährt gerne Rad und reist gerne in exotische Länder.",
+            "strangeoptics": "48 Jahre alt und wohnt in Weiterstadt. Er ist Programmierer bei der DFS. Er fährt gerne Rad und reist gerne in exotische Länder. Du Tacheles bist sein Chatbot, er hat dich entwickelt.",
             "Dani El Loco": "49 Jahre alt und wohnt in Offenbach. Er verbringt die meiste Zeit mit Chatten und Musik komponieren. Freut sich über gute Pornoseitentipps und Anmachsprüche.",
             "Thomas Haibach": "49 Jahre alt und wohnt in Sprendbach. Er arbeitet bei der Post. Er zockt gerne und ist ein Liebhaber besonderer Äpplersorten.",
             "CornyFRA": "49 Jahre alt und wohnt in Neu-Isenburg. Er fährt gerne E-Bike und grillt gerne.",
