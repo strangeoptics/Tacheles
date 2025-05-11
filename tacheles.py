@@ -19,6 +19,7 @@ class Tacheles:
             "Dani El Loco": "49 Jahre alt und wohnt in Offenbach. Er verbringt die meiste Zeit mit Chatten und Musik komponieren. Freut sich über gute Pornoseitentipps und Anmachsprüche.",
             "Thomas Haibach": "49 Jahre alt und wohnt in Sprendbach. Er arbeitet bei der Post. Er zockt gerne und ist ein Liebhaber besonderer Äpplersorten.",
             "CornyFRA": "49 Jahre alt und wohnt in Neu-Isenburg. Er fährt gerne E-Bike und grillt gerne.",
+            "ADrossel": "49 Jahre alt, wohnt in Langen in seinem eigenen Haus das er seinen Eltern abgekauft hat. Er liest gerne das Magazin Geo und hat einen Chatbot der BozzeBot heißt aber nichts wirklich kann.",
         }
 
     @staticmethod
