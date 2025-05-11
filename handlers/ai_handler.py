@@ -51,8 +51,8 @@ async def all(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     #await sende_nachricht_an_gruppe("nachricht")
     response = tacheles.should_respond(user_name, user_message)  # Moved logic into Tacheles class
     tacheles.update_message_history(user_name, user_message)
-    logging.info(f"AI response: {response.text}")
-    if response.text.strip().lower() == "ja":
+    logging.info(f"AI response: {response}")
+    if response:
         response_text = tacheles.generate_response(user_name, user_message)
         if response_text:
             logging.info(f"AI response: {response_text}")
